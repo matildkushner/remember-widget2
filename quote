@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>remember who the fuck you are 🌿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fdf8f3;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .widget-container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      background: #fffef9;
+      border: 2px solid #d2e6d2;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(172, 229, 183, 0.4);
+      width: 90%;
+      max-width: 450px;
+    }
+
+    h2 {
+      color: #4c6e4c;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      text-transform: lowercase;
+    }
+
+    #quote-box {
+      font-size: 1.1rem;
+      margin: 20px 0;
+      color: #6b4e2e;
+      font-style: normal;
+    }
+
+    button {
+      background: linear-gradient(135deg, #cdecc7, #f7d4e3);
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #4f574f;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 8px #d0f0cf;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px #c5f9c5;
+      transform: scale(1.05);
+    }
+
+    .sparkle-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #e6ffe6, #ffffff);
+      border-radius: 50%;
+      animation: float 5s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-container">
+    <h2>remember who the fuck you are</h2>
+    <div id="quote-box">click the sprout to remember 🌿</div>
+    <button onclick="pullQuote()">remind me 🍋</button>
+    <div class="sparkle-container"></div>
+  </div> 
+
+  <script>
+    const quotes = [
+      "I am woman. Hear me roar",
+      "I am woman phenomenally. Phenomenal woman, that's me",
+      "You may not control all the events that happen to you, but you can decide not to be reduced by them. – Maya Angelou",
+      "Be the change that you wish to see in the world. – Mahatma Gandhi",
+      "The wound is the place where the light enters you. – Rumi",
+      "You are your best thing. – Toni Morrison",
+      "Your crown has been bought and paid for. Put it on your head and wear it. – Maya Angelou",
+      "Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure. – Marianne Williamson",
+      "No one can make you feel inferior without your consent. – Eleanor Roosevelt",
+      "The privilege of a lifetime is to become who you truly are. – Carl Jung",
+      "You were never meant to shrink. You were meant to bloom.",
+      "Do not apologise for taking up space.",
+      "Remember who the fuck you are."
+    ];
+
+    function pullQuote() {
+      const quoteBox = document.getElementById("quote-box");
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteBox.innerText = quotes[randomIndex];
+    }
+
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = '100vh';
+      sparkle.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.querySelector('.sparkle-container').appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 6000);
+    }
+
+    setInterval(createSparkle, 300);
+  </script>
+</body>
+</html>
